@@ -4,6 +4,19 @@ import { authBearer } from "../middlewares/authBearer";
 
 export const qcmRouter = Router();
 
+qcmRouter.get("/", async (req, res) => {
+  try {
+    const qcms = await prisma.qcm.findMany({
+      include: {
+        questions: true,
+      },
+    });
+
+    res.status(200).json(qcms);
+  } catch (error) {
+    res.status(500).json({ message: "Erreur serveur" });
+  }
+});
 
 qcmRouter.post("/", async (req, res) => {
   try {

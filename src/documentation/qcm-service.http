@@ -22,7 +22,33 @@ Content-Type: application/json
 
 {
   "data": {
-    "name": "Culture Numérique"
+    "name": "Les Fleurs",
+    "questions": [
+      {
+        "description": "Quelle fleur est souvent associée à l'amour ?",
+        "propositions": [
+          { "description": "La rose", "isValid": true },
+          { "description": "Le tournesol", "isValid": false },
+          { "description": "La marguerite", "isValid": false }
+        ]
+      },
+      {
+        "description": "Quelles fleurs peuvent être jaunes ?",
+        "propositions": [
+          { "description": "Le tournesol", "isValid": true },
+          { "description": "La jonquille", "isValid": true },
+          { "description": "Le cactus", "isValid": false }
+        ]
+      },
+      {
+        "description": "De quoi une fleur a-t-elle besoin pour pousser ?",
+        "propositions": [
+          { "description": "De lumière", "isValid": true },
+          { "description": "D'eau", "isValid": true },
+          { "description": "De plastique", "isValid": false }
+        ]
+      }
+    ]
   }
 }
 
