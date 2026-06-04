@@ -1,6 +1,5 @@
 import { Router } from "express";
 import { prisma } from "../index";
-import { authBearer } from "../middlewares/authBearer";
 
 export const qcmRouter = Router();
 
@@ -177,6 +176,8 @@ qcmRouter.delete("/:id", async (req, res) => {
 qcmRouter.get("/:id/result", async (req, res) => {
   try {
     const qcmId = parseInt(String(req.params.id));
+    const userId = (req as any).user.id;
+    console.log("User ID for result retrieval:", userId);
 
     if (isNaN(qcmId)) {
       return res.status(400).json({ message: "Invalid QCM ID" });
@@ -213,7 +214,7 @@ qcmRouter.get("/:id/result", async (req, res) => {
 
 
 
-qcmRouter.get("/:id/question", authBearer, async (req, res) => {
+qcmRouter.get("/:id/question", async (req, res) => {
   try {
     const qcmId = parseInt(String(req.params.id));
     const userId = (req as any).user.id;
@@ -276,7 +277,7 @@ qcmRouter.get("/:id/question", authBearer, async (req, res) => {
 
 
 
-qcmRouter.post("/:id/response", authBearer, async (req, res) => { 
+qcmRouter.post("/:id/response", async (req, res) => { 
   try {
     const qcmId = parseInt(String(req.params.id));
     const userId = (req as any).user.id;

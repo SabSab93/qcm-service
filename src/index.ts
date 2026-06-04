@@ -7,6 +7,7 @@ import { PrismaClient } from "@prisma/client";
 import { propositionRouter } from "./router/propositions";
 import { questionRouter } from "./router/questions";
 import { userRouter } from "./router/users";
+import { extractUserId } from "./middlewares/extractUserId";
 
 export const prisma = new PrismaClient();
 
@@ -23,10 +24,11 @@ apiRouter.get("/health", (req, res) => {
   res.json({ status: "ok", service: "qcm-service" });
 });
 
-apiRouter.use("/qcms", qcmRouter);
+apiRouter.use("/qcms",extractUserId, qcmRouter);
 apiRouter.use("/results", propositionRouter);
 apiRouter.use("/questions", questionRouter);
 apiRouter.use("/auth", userRouter);
+
 
 
 const PORT = process.env.PORT || 3001;

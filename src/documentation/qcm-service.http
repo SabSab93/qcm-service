@@ -68,12 +68,6 @@ Authorization: Bearer "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwi
 GET  http://localhost:3001/qcms/1/result
 Content-Type: application/json
 
-{
-  "data": {
-    "propositionId": 1,
-    "isChecked": true
-  }
-}
 
 
 
